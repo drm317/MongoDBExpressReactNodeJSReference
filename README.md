@@ -1,0 +1,2 @@
+# MongoDBExpressReactNodeJSReference
+MERN reference implementation
