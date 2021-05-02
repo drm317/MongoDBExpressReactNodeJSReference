@@ -14,6 +14,14 @@ The following are required:
 
 * MongoDB Atlas account with the sample dataset loaded onto a cluster (includes database sample_restaurants)
 * Node.JS (tested with v12.18.0)
+* Node modules
+
+backend
+
+```
+$ npm install express cors mongodb dotenv
+$ npm install -g nodemon
+```
 
 The following are optional for testing:
 
