@@ -14,15 +14,29 @@ The following are required:
 
 * MongoDB Atlas account with the sample dataset loaded onto a cluster (includes database sample_restaurants)
 * Node.JS (tested with v12.18.0)
-* Node modules
 
-backend
+The backend and frontend are setup with npm and npx
+
+### Backend
+
+Create with ```npm```
+
+```
+$ mkdir backend
+$ npm init -y
+```
+
+The following modules can then be installed
 
 ```
 $ npm install express cors mongodb dotenv
 $ npm install -g nodemon
 ```
 
-The following are optional for testing:
+### Frontend
 
-* Postman or Insomnia
+Create with ```npx```
+
+```
+$ npx create-react-app frontend
+```
