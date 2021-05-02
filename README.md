@@ -40,3 +40,15 @@ Create with ```npx```
 ```
 $ npx create-react-app frontend
 ```
+
+## Running this Implementation
+
+### Start the NodeJS and Express Backend
+
+1. Run
+
+```
+$ nodemon server
+```
+
+Nodemon will listen for file changes and automatically update the application without needing to restart.
