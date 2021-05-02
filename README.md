@@ -23,6 +23,7 @@ Create with ```npm```
 
 ```
 $ mkdir backend
+$ cd backend
 $ npm init -y
 ```
 
@@ -43,10 +44,12 @@ PORT=5000
 
 ### Frontend
 
-Create with ```npx```
+Create with ```npx``` and ```npm```
 
 ```
 $ npx create-react-app frontend
+$ npm install bootstrap
+$ npm install react-router-dom
 ```
 
 ## Running this Implementation
