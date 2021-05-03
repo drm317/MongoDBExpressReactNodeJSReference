@@ -44,7 +44,7 @@ PORT=5000
 
 ### Frontend
 
-Create with ```npx``` and ```npm```
+Create with ```npx``` and install the necessary frameworks.
 
 ```
 $ npx create-react-app frontend
@@ -75,4 +75,4 @@ $ npm start
 
 File changes will be picked automatically without the need to restart. The application starts on port 3000. 
 
-Visit ```http://localhost:3000```.
+Visit <a>http://localhost:3000</a>.
