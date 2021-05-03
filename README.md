@@ -73,4 +73,6 @@ Run
 $ npm start
 ```
 
-File changes will be picked automatically without the need to restart. The application starts on port 3000. Click ```http://localhost:3000```.
+File changes will be picked automatically without the need to restart. The application starts on port 3000. 
+
+Visit ```http://localhost:3000```.
