@@ -50,16 +50,27 @@ Create with ```npx``` and ```npm```
 $ npx create-react-app frontend
 $ npm install bootstrap
 $ npm install react-router-dom
+$ npm install axios
 ```
 
 ## Running this Implementation
 
 ### Start the NodeJS and Express Backend
 
-1. Run
+Run
 
 ```
 $ nodemon server
 ```
 
-Nodemon will listen for file changes and automatically update the application without needing to restart.
+Nodemon will listen for file changes and automatically update the application without needing to restart. The server starts on port 5000.
+
+### Start the React Frontend
+
+Run
+
+```
+$ npm start
+```
+
+File changes will be picked automatically without the need to restart. The application starts on port 3000. Click ```http://localhost:3000```.
