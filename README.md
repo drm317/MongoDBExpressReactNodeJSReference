@@ -34,7 +34,9 @@ $ npm install express cors mongodb dotenv
 $ npm install -g nodemon
 ```
 
-Configure the ```.env``` file with the MongoDB Atlas connection URL. This should point to the example ```sample_restaurants``` database that is available to install when a cluster is setup.
+Configure the ```.env``` file with the MongoDB Atlas connection URL. This should point to the example ```sample_restaurants``` database that is available to install when a cluster is setup. 
+
+The URL can be obtained within the MongoDB Atlas UI. Select the cluster > Connect > Connect your application.
 
 ```
 RESTREVIEWS_DB_URI=mongodb+srv://[username]:[password]@[cluster]/sample_restaurants?retryWrites=true&w=majority
