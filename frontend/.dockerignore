@@ -1,0 +1,8 @@
+node_modules
+build
+*.log
+Dockerfile
+.dockerignore
+*.env
+.cache
+*.tmp
