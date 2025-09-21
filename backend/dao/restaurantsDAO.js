@@ -1,5 +1,4 @@
-import mongodb from "mongodb"
-const ObjectId = mongodb.ObjectID
+import { ObjectId } from "mongodb"
 let restaurants
 
 export default class RestaurantsDAO {
@@ -8,7 +7,7 @@ export default class RestaurantsDAO {
       return
     }
     try {
-      restaurants = await conn.db(process.env.RESTREVIEWS_NS).collection("restaurants")
+      restaurants = await conn.db(process.env.RESTREVIEWS_NS || "restaurant_reviews").collection("restaurants")
     } catch (e) {
       console.error(
         `Unable to establish a collection handle in restaurantsDAO: ${e}`,
@@ -21,10 +20,11 @@ export default class RestaurantsDAO {
     page = 0,
     restaurantsPerPage = 20,
   } = {}) {
-    let query
+    let query = {}
     if (filters) {
       if ("name" in filters) {
-        query = { $text: { $search: filters["name"] } }
+        // Use regex search as fallback if text index doesn't exist
+        query = { "name": { $regex: filters["name"], $options: "i" } }
       } else if ("cuisine" in filters) {
         query = { "cuisine": { $eq: filters["cuisine"] } }
       } else if ("zipcode" in filters) {

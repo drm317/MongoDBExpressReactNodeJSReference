@@ -1,19 +1,20 @@
 
 services:
   backend:
-    image: backend1
+    build: ./backend
     container_name: backend
     ports:
       - "5001:5001"
     networks:
       - coursify-network
     environment:
-      MONGO_URI: mongodb://admin:password@mongo:27017 
+      MONGO_URI: mongodb://admin:password@mongo:27017
+      RESTREVIEWS_NS: restaurant_reviews 
     depends_on:
       - mongo
 
   frontend:
-    image: frontend1
+    build: ./frontend
     container_name: frontend
     ports:
       - "3000:3000"
@@ -23,7 +24,7 @@ services:
       - backend
 
   mongo:
-    image: mongo
+    image: mongo:7.0
     container_name: mongo
     ports:
       - "27017:27017"
@@ -32,7 +33,15 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: restaurant_reviews
+    volumes:
+      - mongo_data:/data/db
+      - ./mongo-init:/docker-entrypoint-initdb.d
+    restart: unless-stopped
 
 networks:
   coursify-network: 
     driver: bridge
+
+volumes:
+  mongo_data:

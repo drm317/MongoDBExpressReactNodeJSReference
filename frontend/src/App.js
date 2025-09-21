@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import AddReview from "./components/add-review";
@@ -32,9 +32,9 @@ function App() {
           </li>
           <li className="nav-item" >
             { user ? (
-              <a onClick={logout} className="nav-link" style={{cursor:'pointer'}}>
+              <button onClick={logout} className="nav-link btn btn-link" style={{cursor:'pointer', border: 'none', background: 'none', padding: '0.5rem 1rem'}}>
                 Logout {user.name}
-              </a>
+              </button>
             ) : (            
             <Link to={"/login"} className="nav-link">
               Login
@@ -46,27 +46,22 @@ function App() {
       </nav>
 
       <div className="container mt-3">
-        <Switch>
-          <Route exact path={["/", "/restaurants"]} component={RestaurantsList} />
+        <Routes>
+          <Route path="/" element={<RestaurantsList />} />
+          <Route path="/restaurants" element={<RestaurantsList />} />
           <Route 
             path="/restaurants/:id/review"
-            render={(props) => (
-              <AddReview {...props} user={user} />
-            )}
+            element={<AddReview user={user} />}
           />
           <Route 
             path="/restaurants/:id"
-            render={(props) => (
-              <Restaurant {...props} user={user} />
-            )}
+            element={<Restaurant user={user} />}
           />
           <Route 
             path="/login"
-            render={(props) => (
-              <Login {...props} login={login} />
-            )}
+            element={<Login login={login} />}
           />
-        </Switch>
+        </Routes>
       </div>
     </div>
   );

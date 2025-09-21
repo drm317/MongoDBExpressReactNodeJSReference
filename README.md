@@ -4,7 +4,7 @@ This is an example implementation of a restaurant review application using the E
 
 The following technologies are used:
 
-* MongoDB Atlas for the database
+* MongoDB (via Docker container) for the database
 * Express and Node.JS for the backend API
 * React for the client
 
@@ -12,69 +12,85 @@ The following technologies are used:
 
 The following are required:
 
-* MongoDB Atlas account with the sample dataset loaded onto a cluster (includes database sample_restaurants)
-* Node.JS (tested with v12.18.0)
+* Docker and Docker Compose
+* Node.JS (tested with v24.6.0)
 
-The backend and frontend are setup with npm and npx
+## Running with Docker Compose (Recommended)
 
-### Backend
+The easiest way to run the entire application is using Docker Compose, which will start all services including MongoDB.
 
-Create with ```npm```
+### Quick Start
 
-```
-$ mkdir backend
-$ cd backend
-$ npm init -y
-```
+1. Clone the repository
+2. Build and start all services:
 
-The following modules can then be installed
-
-```
-$ npm install express cors mongodb dotenv
-$ npm install -g nodemon
+```bash
+docker-compose up --build
 ```
 
-Configure the ```.env``` file with the MongoDB Atlas connection URL. This should point to the example ```sample_restaurants``` database that is available to install when a cluster is setup. 
+This will start:
+- MongoDB container on port 27017
+- Backend API on port 5001
+- Frontend React app on port 3000
 
-The URL can be obtained within the MongoDB Atlas UI. Select the cluster > Connect > Connect your application.
+Visit http://localhost:3000 to access the application.
 
-```
-RESTREVIEWS_DB_URI=mongodb+srv://[username]:[password]@[cluster]/sample_restaurants?retryWrites=true&w=majority
-RESTREVIEWS_NS=sample_restaurants
-PORT=5000
-```
+### Docker Services
 
-### Frontend
+- **MongoDB**: Local MongoDB instance with persistent data storage
+- **Backend**: Express.js API server
+- **Frontend**: React development server
 
-Create with ```npx``` and install the necessary frameworks.
+### Stopping the Application
 
-```
-$ npx create-react-app frontend
-$ npm install bootstrap
-$ npm install react-router-dom
-$ npm install axios
+```bash
+docker-compose down
 ```
 
-## Running this Implementation
+To remove all data and start fresh:
 
-### Start the NodeJS and Express Backend
-
-Run
-
-```
-$ nodemon server
+```bash
+docker-compose down -v
+docker-compose up --build
 ```
 
-Nodemon will listen for file changes and automatically update the application without needing to restart. The server starts on port 5000.
+## Development Setup (Alternative)
 
-### Start the React Frontend
+For local development without Docker:
 
-Run
+### Backend Setup
 
+```bash
+cd backend
+npm install
 ```
-$ npm start
+
+Required dependencies:
+- express
+- cors
+- mongodb
+- dotenv
+
+### Frontend Setup
+
+```bash
+cd frontend
+npm install
 ```
 
-File changes will be picked automatically without the need to restart. The application starts on port 3000. 
+### Running Locally
 
-Visit <a>http://localhost:3000</a>.
+1. Start MongoDB (requires local MongoDB installation)
+2. Start the backend:
+```bash
+cd backend
+npm start
+```
+
+3. Start the frontend:
+```bash
+cd frontend
+npm start
+```
+
+The backend runs on port 8000 and frontend on port 3000.
